@@ -1,5 +1,5 @@
 // javac -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:pso PSOTester.java
-// java -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:pso PSOTester.java
+// java -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:pso PSOTester
 
 public class PSOTester {
   ParticleSwarmOptimization pso;
@@ -11,8 +11,8 @@ public class PSOTester {
 
   public static void main(String[] args) {
     PSOTester tester = new PSOTester();
-    tester.test(40, 2, 100, -5, 5, "shpere");
-    // argument: (particleCount, demension, minShreshold, maxShreshold, epochs, objType)
+    tester.test(40, 2, 100, -5.0, 5.0, "shpere");
+    // argument: (particleCount, demension, epochs, minShreshold, maxShreshold, objType)
     // objType: shpere, threshold: [-5.0, 5.0]
     // objType: rastrigin, threshold: [-5.0, 5.0]
     // objType: rosenbrock, threshold: [-5.0, 5.0]
