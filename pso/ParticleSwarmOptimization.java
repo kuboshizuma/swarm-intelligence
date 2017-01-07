@@ -23,13 +23,19 @@ public class ParticleSwarmOptimization extends JFrame{
   private ArrayList<Particle> solutions;
   private int epoch;
   private DefaultCategoryDataset graph;
+  private String OBJ_TYPE;
+  private double MIN_SHRESHOLD;
+  private double MAX_SHRESHOLD;
 
-  public ParticleSwarmOptimization(int particleCount, int epochs) {
-    MAX_LENGTH = 2;
+  public ParticleSwarmOptimization(int particleCount, int demension, int epochs, double minShreshold, double maxShreshold, String objType) {
+    MAX_LENGTH = demension;
     PARTICLE_COUNT = particleCount;
     MAX_EPOCHS = epochs;
     rand = new Random();
     graph = new DefaultCategoryDataset();
+    OBJ_TYPE = objType;
+    MIN_SHRESHOLD = minShreshold;
+    MAX_SHRESHOLD = maxShreshold;
   }
 
   public void algorithm() {
@@ -88,7 +94,7 @@ public class ParticleSwarmOptimization extends JFrame{
     int shuffles = 0;
 
     for(int i = 0; i < PARTICLE_COUNT; i++) {
-      Particle newParticle = new Particle(MAX_LENGTH, -5.0, 5.0);
+      Particle newParticle = new Particle(MAX_LENGTH, MIN_SHRESHOLD, MAX_SHRESHOLD, OBJ_TYPE);
 
       particles.add(newParticle);
       newParticleIndex = particles.indexOf(newParticle);

@@ -8,14 +8,16 @@ public class Particle implements Comparable<Particle> {
   private double MIN_VALUE;
   private double MAX_VALUE;
   private Random rand;
+  private ObjectiveFunctions objFunc;
 
-  public Particle(int n, double min, double max) {
+  public Particle(int n, double min, double max, String objType) {
     MAX_LENGTH = n;
     MIN_VALUE = min;
     MAX_VALUE = max;
     position = new double[MAX_LENGTH];
     velocity = new double[MAX_LENGTH];
     rand = new Random();
+    objFunc = new ObjectiveFunctions(objType);
     initData();
   }
 
@@ -38,14 +40,8 @@ public class Particle implements Comparable<Particle> {
   }
 
   public void computeCost() {
-    double tmp_cost = 0.0;
-    for(int i = 0; i < MAX_LENGTH; i++) {
-      // tmp_cost += Math.pow(position[i], 2);
-      double x = position[i];
-      // tmp_cost += Math.pow(x, 2) - 6 * x + 14;
-      tmp_cost += Math.pow(x, 2) - 10 * Math.cos(2*x*Math.PI);
-    }
-    this.cost = tmp_cost;
+    double calcCost = objFunc.calc(position);
+    this.cost = calcCost;
   }
 
   public double getCost() {
