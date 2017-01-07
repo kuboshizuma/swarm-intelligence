@@ -23,26 +23,26 @@ public class ArtificialBeeColony extends JFrame{
 
   public Random rand;
   public ArrayList<Honey> foodSources;
-  // public ArrayList<Honey> solutions;
   public Honey gBest;
   public int epoch;
+  public String OBJ_TYPE;
 
-  public ArtificialBeeColony(int beeNumber) {
-    MAX_LENGTH = 2;
+  public ArtificialBeeColony(int beeNumber, int demension, int epochs, double minShreshold, double maxShreshold, int trialLimit, String objType) {
+    MAX_LENGTH = demension;
     NP = beeNumber;
     FOOD_NUMBER = NP / 2;
-    LIMIT = 50;
-    MAX_EPOCHS = 1000;
+    LIMIT = trialLimit;
+    MAX_EPOCHS = epochs;
     gBest = null;
     epoch = 0;
-    MIN_SHRESHOLD = -5.0;
-    MAX_SHRESHOLD = 5.0;
+    MIN_SHRESHOLD = minShreshold;
+    MAX_SHRESHOLD = maxShreshold;
     graph = new DefaultCategoryDataset();
+    OBJ_TYPE = objType;
   }
 
   public void algorithm() {
     foodSources = new ArrayList<Honey>();
-    // solutions = new ArrayList<Honey>();
     rand = new Random();
     boolean done = false;
     epoch = 0;
@@ -60,7 +60,6 @@ public class ArtificialBeeColony extends JFrame{
           sendScoutBees();
 
           epoch++;
-          // System.out.println("Epoch: " + epoch);
       } else {
           done = true;
       }
@@ -93,7 +92,7 @@ public class ArtificialBeeColony extends JFrame{
     int newFoodIndex = 0;
 
     for(int i = 0; i < FOOD_NUMBER; i++) {
-        Honey newHoney = new Honey(MAX_LENGTH, MIN_SHRESHOLD, MAX_SHRESHOLD);
+        Honey newHoney = new Honey(MAX_LENGTH, MIN_SHRESHOLD, MAX_SHRESHOLD, OBJ_TYPE);
 
         foodSources.add(newHoney);
         newFoodIndex = foodSources.indexOf(newHoney);

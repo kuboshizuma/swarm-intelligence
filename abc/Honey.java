@@ -10,8 +10,9 @@ public class Honey implements Comparable<Honey> {
   private double MIN_VALUE;
   private double MAX_VALUE;
   private Random rand;
+  private ObjectiveFunctions objFunc;
 
-  public Honey(int n, double min, double max) {
+  public Honey(int n, double min, double max, String objType) {
     MAX_LENGTH = n;
     nectar = new double[MAX_LENGTH];
     trials = 0;
@@ -21,6 +22,7 @@ public class Honey implements Comparable<Honey> {
     MIN_VALUE = min;
     MAX_VALUE = max;
     rand = new Random();
+    objFunc = new ObjectiveFunctions(objType);
     initNectar();
   }
 
@@ -42,14 +44,8 @@ public class Honey implements Comparable<Honey> {
   }
 
   public void computeCost() {
-    double tmp_cost = 0.0;
-    for(int i = 0; i < MAX_LENGTH; i++) {
-      // tmp_cost += Math.pow(position[i], 2);
-      double x = nectar[i];
-      // tmp_cost += Math.pow(x, 2) - 6 * x + 14;
-      tmp_cost += Math.pow(x, 2) - 10 * Math.cos(2*x*Math.PI);
-    }
-    this.cost = tmp_cost;
+    double calcCost = objFunc.calc(nectar);
+    this.cost = calcCost;
   }
 
   public double getCost() {
