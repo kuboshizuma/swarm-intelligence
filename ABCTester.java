@@ -1,7 +1,7 @@
-// javac -classpath :jcommon.jar:jfreechart.jar Tester.java
-// java -cp :jcommon.jar:jfreechart.jar Tester
+// javac -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:abc ABCTester.java
+// java -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:abc ABCTester
 
-public class Tester {
+public class ABCTester {
   ArtificialBeeColony abc;
 
   public void test(int beeNumber, int demension, int epochs, double minShreshold, double maxShreshold, int trialLimit, String objType) {
@@ -10,7 +10,7 @@ public class Tester {
   }
 
   public static void main(String[] args) {
-    Tester tester = new Tester();
+    ABCTester tester = new ABCTester();
     tester.test(40, 2, 100, -5.0, 5.0, 50, "shpere");
     // argument: (beeNumber, demension, epochs, minShreshold, maxShreshold, trialLimit, objType)
     // objType: shpere, threshold: [-5.0, 5.0]

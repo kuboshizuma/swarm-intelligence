@@ -1,7 +1,7 @@
-// javac -classpath :jcommon.jar:jfreechart.jar Tester.java
-// java -cp :jcommon.jar:jfreechart.jar Tester
+// javac -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:pso PSOTester.java
+// java -cp :modules/jcommon.jar:modules/jfreechart.jar:modules:pso PSOTester.java
 
-public class Tester {
+public class PSOTester {
   ParticleSwarmOptimization pso;
 
   public void test(int particleCount, int demension, int epochs, double minShreshold, double maxShreshold, String objType) {
@@ -10,7 +10,7 @@ public class Tester {
   }
 
   public static void main(String[] args) {
-    Tester tester = new Tester();
+    PSOTester tester = new PSOTester();
     tester.test(40, 2, 100, -5, 5, "shpere");
     // argument: (particleCount, demension, minShreshold, maxShreshold, epochs, objType)
     // objType: shpere, threshold: [-5.0, 5.0]
