@@ -15,17 +15,15 @@ public class ParticleSwarmOptimization extends JFrame{
   private int MAX_LENGTH;
   private int PARTICLE_COUNT;
   private int MAX_EPOCHS;
-  private int SHUFFLE_MIN;
-  private int SHUFFLE_MAX;
   private Particle GLOBAL_BEST_PARTICLE;
-  private Random rand;
   private ArrayList<Particle> particles;
   private ArrayList<Particle> solutions;
+  private Random rand;
   private int epoch;
-  private DefaultCategoryDataset graph;
-  private String OBJ_TYPE;
   private double MIN_SHRESHOLD;
   private double MAX_SHRESHOLD;
+  private String OBJ_TYPE;
+  private DefaultCategoryDataset graph;
 
   public ParticleSwarmOptimization(int particleCount, int demension, int epochs, double minShreshold, double maxShreshold, String objType) {
     MAX_LENGTH = demension;

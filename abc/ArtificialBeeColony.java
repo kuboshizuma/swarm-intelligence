@@ -17,15 +17,14 @@ public class ArtificialBeeColony extends JFrame{
   public int FOOD_NUMBER;
   public int LIMIT;
   public int MAX_EPOCHS;
-  public double MIN_SHRESHOLD;
-  public double MAX_SHRESHOLD;
-  private DefaultCategoryDataset graph;
-
-  public Random rand;
   public ArrayList<Honey> foodSources;
   public Honey gBest;
+  public Random rand;
   public int epoch;
+  public double MIN_SHRESHOLD;
+  public double MAX_SHRESHOLD;
   public String OBJ_TYPE;
+  private DefaultCategoryDataset graph;
 
   public ArtificialBeeColony(int beeNumber, int demension, int epochs, double minShreshold, double maxShreshold, int trialLimit, String objType) {
     MAX_LENGTH = demension;
